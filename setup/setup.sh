@@ -11,9 +11,11 @@ if [ $? -eq 0 ]; then
 fi
 
 sudo apt-get update
-sudo apt-get --yes install git vim
+sudo apt-get --yes install git vim python3-venv libsdl1.2-dev
 
 git clone https://github.com/matthewrkitson/infopanel.git
+
+python -m venv infopanel/software/venv
 
 if ! crontab -l | grep infopanel/software/launch.sh; then
   crontab -l | sed '$ a @reboot infopanel/software/launch.sh' | crontab
