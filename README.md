@@ -29,7 +29,7 @@ Raspberry Pi project to make a "museum-style" information panel with buttons tha
 * Write to an SD card using [Etcher](https://www.balena.io/etcher/)
 
 ## Configure the SD card
-* Copy the files from the [setup/boot] folder to the boot partiton
+* Copy the files from the [setup/boot](setup/boot) folder to the boot partiton
   * Add an empty file called `ssh` to the boot partition
   * Add a file called `wpa_supplicant.conf` to the boot partition, and fill with your WiFi settings
 * Add the sound files to to boot partition
