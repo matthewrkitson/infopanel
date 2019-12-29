@@ -30,8 +30,8 @@ Raspberry Pi project to make a "museum-style" information panel with buttons tha
 
 ## Configure the SD card
 * Copy the files from the [setup/boot](setup/boot) folder to the boot partiton
-  * Add an empty file called `ssh` to the boot partition
-  * Add a file called `wpa_supplicant.conf` to the boot partition, and fill with your WiFi settings
+  * An empty file called `ssh` to enable ssh access
+  * A file called `wpa_supplicant.conf` containing your WiFi settings (update it to match your WiFi network)
 * Add the sound files to to boot partition
   * Make a folder called "media"
   * Add wav or mp3 files. 
