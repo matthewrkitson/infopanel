@@ -11,7 +11,7 @@ if [ $? -eq 0 ]; then
 fi
 
 sudo apt-get update
-sudo apt-get --yes install git vim python3-venv libsdl1.2-dev
+sudo apt-get --yes install git vim python3-venv libsdl1.2-dev raspi-gpio
 
 git clone https://github.com/matthewrkitson/infopanel.git
 
