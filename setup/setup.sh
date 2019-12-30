@@ -20,7 +20,7 @@ fi
 
 git clone https://github.com/matthewrkitson/infopanel.git
 
-python -m venv infopanel/software/venv
+python3 -m venv infopanel/software/venv
 
 if ! crontab -l | grep infopanel/software/launch.sh; then
   crontab -l | sed '$ a @reboot infopanel/software/launch.sh' | crontab
