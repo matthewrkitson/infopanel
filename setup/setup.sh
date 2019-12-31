@@ -11,7 +11,7 @@ if [ $? -eq 0 ]; then
 fi
 
 sudo apt-get update
-sudo apt-get --yes install git vim python3-venv libsdl1.2-dev raspi-gpio
+sudo apt-get --yes install git vim python3-venv libsdl1.2-dev raspi-gpio wiringpi
 
 # Set the alternative functions for GPIO 13 and 18 to allow audio output
 if ! cat /boot/config.txt | grep dtoverlay=pwm-2chan; then
