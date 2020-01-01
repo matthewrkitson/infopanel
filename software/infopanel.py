@@ -9,10 +9,17 @@ import pathlib
 import itertools
 
 logger = logging.getLogger(__name__)
+
 fileHandler = logging.handlers.RotatingFileHandler("infopanel.log", maxBytes=1024*1024, backupCount=5)
 logger.addHandler(fileHandler)
+
 consoleHandler = logging.StreamHandler()
 logger.addHandler(consoleHandler)
+
+formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+consoleHandler.setFormatter(formatter)
+fileHandler.setFormatter(formatter)
+
 logger.setLevel(logging.DEBUG)
 logger.info("Information Panel starting")
 
@@ -42,15 +49,20 @@ def find_media(index):
         return None
 
 def handle_button_press(button):
-    led, sound = buttons[button]
+    led, sound, audio = buttons[button]
     logger.info("Button " + str(button) + "pressed, lighting LED " + str(led) + " and playing sound " + str(sound))
     led.on()
+    audio.on()
     if sound:
         os.system("aplay '" + sound + "'")
     led.off()
+    audio.off()
     logger.info("Done")
 
-buttons = { gpiozero.Button(btn): (gpiozero.LED(led), find_media(i)) for i, (btn, led) in enumerate(gpio_pairs) }
+audio = gpiozero.DigitalOutputDevice(16, active_high=False)
+audio.off()
+
+buttons = { gpiozero.Button(btn): (gpiozero.LED(led), find_media(i), audio) for i, (btn, led) in enumerate(gpio_pairs) }
 
 for button in buttons:
     button.when_pressed = handle_button_press
