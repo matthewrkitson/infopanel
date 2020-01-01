@@ -23,7 +23,7 @@ git clone https://github.com/matthewrkitson/infopanel.git
 python3 -m venv infopanel/software/venv
 
 if ! crontab -l | grep infopanel/software/launch.sh; then
-  crontab -l | sed '$ a @reboot infopanel/software/launch.sh' | crontab
+  crontab -l | awk '{print} END {print "@reboot infopanel/software/launch.sh" }' | crontab
 fi
 
 sudo raspi-config --expand-rootfs
